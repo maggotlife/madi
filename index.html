@@ -232,16 +232,6 @@
   .projects{background:var(--ink-2);color:var(--paper);}
   .projects .section-head p{color:#C7D3D9;}
   .projects .eyebrow{color:var(--copper-light);}
-  .upload-panel{
-    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
-    background:rgba(255,255,255,.06);
-    border:1px dashed rgba(224,166,105,.5);
-    border-radius:6px;padding:20px 22px;margin-bottom:36px;
-  }
-  .upload-panel p{font-size:14px;color:#C7D3D9;max-width:56ch;}
-  .upload-panel .label{font-family:var(--mono);font-size:11.5px;color:var(--copper-light);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;display:block;}
-  #photoInput{display:none;}
-
   .carousel{position:relative;}
   .carousel-viewport{
     overflow:hidden;border-radius:8px;border:1px solid rgba(255,255,255,.12);
@@ -480,17 +470,6 @@
         <p>Fotos reales de trabajos en terreno: fugas resueltas, destapes, instalaciones y mantenciones de alcantarillado.</p>
       </div>
 
-      <div class="upload-panel">
-        <div>
-          <span class="label">Panel de administración</span>
-          <p>Haz clic en "Subir fotos" para agregar más imágenes al carrusel. (Las que subas aquí quedan guardadas solo en tu navegador mientras editas — para dejarlas fijas en el sitio para todos los visitantes, pásamelas y las incrusto directo en el archivo.)</p>
-        </div>
-        <div>
-          <input type="file" id="photoInput" accept="image/*" multiple>
-          <button type="button" class="btn btn-copper" id="uploadBtn">Subir fotos</button>
-        </div>
-      </div>
-
       <div class="carousel" id="carousel">
         <div class="carousel-viewport">
           <div class="carousel-track" id="carouselTrack">
@@ -676,12 +655,9 @@
   const dotsWrap = document.getElementById('carouselDots');
   const prevBtn = document.getElementById('prevBtn');
   const nextBtn = document.getElementById('nextBtn');
-  const photoInput = document.getElementById('photoInput');
-  const uploadBtn = document.getElementById('uploadBtn');
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
   const lightboxClose = document.getElementById('lightboxClose');
-  const STORAGE_KEY = 'madi_gallery_extra_photos';
   let current = 0;
 
   function slides(){ return [...track.querySelectorAll('.carousel-slide')]; }
@@ -709,39 +685,8 @@
   prevBtn.addEventListener('click', () => { current = (current - 1 + slides().length) % slides().length; updateCarousel(); });
   nextBtn.addEventListener('click', () => { current = (current + 1) % slides().length; updateCarousel(); });
 
-  function addSlide(dataUrl, caption){
-    const slide = document.createElement('div');
-    slide.className = 'carousel-slide';
-    slide.innerHTML = `<img src="${dataUrl}" alt="${caption || 'Foto de proyecto MADI'}"><p class="caption">${caption || ''}</p>`;
-    track.appendChild(slide);
-    buildDots();
-    updateCarousel();
-  }
-
-  function saveExtraPhotos(){
-    const extras = slides().slice(3).map(s => s.querySelector('img').src);
-    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(extras)); }catch(e){ /* almacenamiento lleno o no disponible */ }
-  }
-
-  function loadExtraPhotos(){
-    let extras = [];
-    try{ extras = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }catch(e){ extras = []; }
-    extras.forEach(src => addSlide(src, ''));
-  }
-
   buildDots();
-  loadExtraPhotos();
-
-  uploadBtn.addEventListener('click', () => photoInput.click());
-  photoInput.addEventListener('change', (e) => {
-    const files = [...e.target.files];
-    files.forEach(file => {
-      const reader = new FileReader();
-      reader.onload = (ev) => { addSlide(ev.target.result, ''); saveExtraPhotos(); };
-      reader.readAsDataURL(file);
-    });
-    photoInput.value = '';
-  });
+  updateCarousel();
 
   track.addEventListener('click', (e) => {
     const slide = e.target.closest('.carousel-slide');
