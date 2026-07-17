@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MADI Gasfitería — Fugas, destapes y mantención de alcantarillado</title>
+<meta name="description" content="MADI: mantención de gasfitería, detección de fugas, destapes y alcantarillado. Escríbenos por WhatsApp y coordinamos tu visita.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#132436;
+    --ink-2:#1c3a53;
+    --paper:#F6F3EC;
+    --paper-2:#EDE8DB;
+    --copper:#B96B33;
+    --copper-light:#E0A669;
+    --water:#3C7D8C;
+    --line:#D8D0BE;
+    --white:#FDFCF9;
+    --danger:#B33A2E;
+
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+
+    --maxw: 1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;}
+  h1,h2,h3{font-family:var(--display);margin:0;line-height:1.05;}
+  p{margin:0;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--copper);
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    font-family:var(--body);
+    font-weight:600;
+    font-size:15px;
+    padding:14px 24px;
+    border-radius:3px;
+    text-decoration:none;
+    border:1px solid transparent;
+    cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn:active{transform:translateY(1px);}
+  .btn-copper{
+    background:var(--copper);
+    color:var(--white);
+    box-shadow:0 1px 0 rgba(0,0,0,.15);
+  }
+  .btn-copper:hover{background:#a55c29;}
+  .btn-outline{
+    background:transparent;
+    color:var(--paper);
+    border-color:rgba(246,243,236,.4);
+  }
+  .btn-outline:hover{border-color:var(--paper);}
+  .btn-outline-ink{
+    background:transparent;
+    color:var(--ink);
+    border-color:var(--line);
+  }
+  .btn-outline-ink:hover{border-color:var(--ink);}
+
+  /* ---------- Header ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(19,36,54,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 28px;
+    max-width:var(--maxw);margin:0 auto;
+  }
+  .brand{
+    display:flex;align-items:baseline;gap:10px;
+    color:var(--paper);text-decoration:none;
+  }
+  .brand-mark{
+    font-family:var(--display);
+    font-weight:700;font-size:24px;letter-spacing:.01em;
+  }
+  .brand-tag{
+    font-family:var(--mono);font-size:11px;color:var(--copper-light);
+    letter-spacing:.08em;text-transform:uppercase;
+  }
+  nav.links{display:flex;gap:28px;align-items:center;}
+  nav.links a{
+    color:var(--paper);text-decoration:none;font-size:14.5px;font-weight:500;
+    opacity:.85;
+  }
+  nav.links a:hover{opacity:1;}
+  .badge-247{
+    display:inline-flex;align-items:center;gap:6px;
+    font-family:var(--mono);font-size:11px;letter-spacing:.06em;
+    color:var(--copper-light);border:1px solid rgba(224,166,105,.4);
+    padding:3px 9px;border-radius:20px;margin-left:6px;
+  }
+  .badge-247::before{content:"";width:6px;height:6px;border-radius:50%;background:#4CD37A;display:inline-block;}
+  .nav-actions{display:flex;align-items:center;gap:16px;}
+  .nav-phone{
+    font-family:var(--mono);color:var(--paper);font-size:13.5px;text-decoration:none;
+    opacity:.9;display:none;
+  }
+  @media(min-width:860px){.nav-phone{display:inline;}}
+  .menu-toggle{display:none;background:none;border:none;color:var(--paper);font-size:26px;cursor:pointer;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    background:linear-gradient(180deg,var(--ink) 0%, var(--ink-2) 100%);
+    color:var(--paper);
+    overflow:hidden;
+    padding:88px 0 0 0;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;
+    padding-bottom:60px;
+  }
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+  .hero h1{
+    font-size:clamp(34px,5.4vw,58px);
+    font-weight:700;
+    margin-top:14px;
+    max-width:14ch;
+  }
+  .hero h1 em{
+    font-style:normal;color:var(--copper-light);
+  }
+  .hero p.lead{
+    font-size:17.5px;
+    max-width:46ch;
+    margin-top:20px;
+    color:#D9E1E6;
+  }
+  .hero-ctas{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px;}
+  .hero-note{
+    margin-top:18px;font-family:var(--mono);font-size:12.5px;color:#9FB4C0;
+  }
+
+  .pipe-art{position:relative;height:420px;}
+  .pipe-art svg{position:absolute;inset:0;width:100%;height:100%;}
+
+  .flow-dot{
+    fill:var(--copper-light);
+    offset-path:path("M40,40 L260,40 L260,150 L60,150 L60,260 L300,260 L300,370");
+    animation:flowmove 6s linear infinite;
+  }
+  @keyframes flowmove{
+    0%{offset-distance:0%;}
+    100%{offset-distance:100%;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .flow-dot{animation:none;offset-distance:35%;}
+  }
+
+  /* ---------- Section shells ---------- */
+  section{padding:88px 0;}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,38px);margin-top:10px;}
+  .section-head p{margin-top:14px;font-size:16px;color:#3E4E5C;}
+
+  /* ---------- Services ---------- */
+  .services{background:var(--paper);}
+  .service-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  }
+  @media(max-width:900px){.service-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:560px){.service-grid{grid-template-columns:1fr;}}
+  .service-card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:26px 24px;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .service-card:hover{border-color:var(--copper);transform:translateY(-2px);}
+  .service-card .service-num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:34px;height:34px;border-radius:50%;
+    background:var(--paper-2);color:var(--copper);
+    font-family:var(--mono);font-size:13px;margin-bottom:14px;
+  }
+  .service-card h3{font-size:19px;margin-bottom:8px;}
+  .service-card p{color:#3E4E5C;font-size:15px;}
+  .service-card .tags{margin-top:14px;display:flex;gap:8px;flex-wrap:wrap;}
+  .tag{
+    font-family:var(--mono);font-size:11.5px;color:var(--water);
+    border:1px solid #C6D6D9;background:#EFF5F5;
+    padding:3px 9px;border-radius:2px;
+  }
+
+  /* ---------- Process ---------- */
+  .process{background:var(--ink);color:var(--paper);}
+  .process .section-head p{color:#B9C6CE;}
+  .process .section-head .eyebrow{color:var(--copper-light);}
+  .process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.12);}
+  @media(max-width:760px){.process-grid{grid-template-columns:1fr;}}
+  .process-item{background:var(--ink);padding:34px 28px;}
+  .process-item .step{
+    font-family:var(--mono);color:var(--copper-light);font-size:13px;
+  }
+  .process-item h3{font-size:19px;margin-top:10px;color:var(--paper);font-family:var(--display);}
+  .process-item p{margin-top:10px;color:#B9C6CE;font-size:14.5px;}
+
+  /* ---------- Contact ---------- */
+  /* ---------- Proyectos / Galería ---------- */
+  .projects{background:var(--ink-2);color:var(--paper);}
+  .projects .section-head p{color:#C7D3D9;}
+  .projects .eyebrow{color:var(--copper-light);}
+  .upload-panel{
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+    background:rgba(255,255,255,.06);
+    border:1px dashed rgba(224,166,105,.5);
+    border-radius:6px;padding:20px 22px;margin-bottom:36px;
+  }
+  .upload-panel p{font-size:14px;color:#C7D3D9;max-width:56ch;}
+  .upload-panel .label{font-family:var(--mono);font-size:11.5px;color:var(--copper-light);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px;display:block;}
+  #photoInput{display:none;}
+
+  .carousel{position:relative;}
+  .carousel-viewport{
+    overflow:hidden;border-radius:8px;border:1px solid rgba(255,255,255,.12);
+  }
+  .carousel-track{
+    display:flex;transition:transform .4s ease;
+  }
+  .carousel-slide{
+    position:relative;flex:0 0 100%;aspect-ratio:16/10;background:rgba(255,255,255,.04);cursor:pointer;
+  }
+  .carousel-slide img{width:100%;height:100%;object-fit:cover;display:block;}
+  .carousel-slide .caption{
+    position:absolute;left:0;right:0;bottom:0;
+    background:linear-gradient(0deg, rgba(10,16,22,.82), rgba(10,16,22,0));
+    color:var(--paper);font-size:14px;padding:34px 20px 14px;
+  }
+  .carousel-slide.placeholder-slide{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:#7C8E98;
+  }
+  .carousel-slide.placeholder-slide .icon{font-family:var(--mono);font-size:24px;color:var(--copper-light);}
+  .carousel-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:42px;height:42px;border-radius:50%;border:none;cursor:pointer;
+    background:rgba(19,36,54,.75);color:var(--paper);font-size:20px;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .carousel-arrow:hover{background:var(--copper);}
+  .carousel-arrow.prev{left:14px;}
+  .carousel-arrow.next{right:14px;}
+  .carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:16px;}
+  .carousel-dot{
+    width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.25);border:none;cursor:pointer;padding:0;
+  }
+  .carousel-dot.active{background:var(--copper-light);}
+
+  .lightbox{
+    position:fixed;inset:0;background:rgba(10,16,22,.92);
+    display:none;align-items:center;justify-content:center;z-index:100;padding:24px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{max-width:90vw;max-height:85vh;border-radius:4px;}
+  .lightbox-close{
+    position:absolute;top:22px;right:26px;color:#fff;font-size:30px;
+    background:none;border:none;cursor:pointer;
+  }
+
+  .contact{background:var(--paper-2);}
+  .contact-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:56px;
+    align-items:start;
+  }
+  @media(max-width:860px){.contact-grid{grid-template-columns:1fr;}}
+  .contact-info h3{font-size:22px;margin-bottom:14px;}
+  .contact-info p{color:#3E4E5C;font-size:15.5px;max-width:44ch;}
+  .contact-methods{margin-top:26px;display:flex;flex-direction:column;gap:14px;}
+  .contact-method{
+    display:flex;align-items:center;gap:14px;
+    padding:14px 16px;background:var(--white);border:1px solid var(--line);
+    border-radius:4px;text-decoration:none;color:var(--ink);
+  }
+  .contact-method:hover{border-color:var(--copper);}
+  .contact-method .icon{
+    width:34px;height:34px;border-radius:50%;
+    background:var(--ink);color:var(--copper-light);
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;font-family:var(--mono);font-size:14px;
+  }
+  .contact-method .label{font-family:var(--mono);font-size:11.5px;color:#6B7A85;text-transform:uppercase;letter-spacing:.06em;}
+  .contact-method .value{font-weight:600;font-size:15px;}
+
+  form.card{
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:32px;
+  }
+  .field{margin-bottom:18px;}
+  .field label{
+    display:block;font-family:var(--mono);font-size:12px;text-transform:uppercase;
+    letter-spacing:.05em;color:#5C6B76;margin-bottom:7px;
+  }
+  .field input, .field select, .field textarea{
+    width:100%;padding:12px 13px;
+    border:1px solid var(--line);border-radius:3px;
+    font-family:var(--body);font-size:15px;background:var(--paper);
+    color:var(--ink);
+  }
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:2px solid var(--copper);outline-offset:1px;border-color:var(--copper);
+  }
+  .field textarea{resize:vertical;min-height:96px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  @media(max-width:520px){.field-row{grid-template-columns:1fr;}}
+  .form-foot{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+    margin-top:6px;
+  }
+  .form-note{font-size:12.5px;color:#6B7A85;max-width:26ch;}
+  .form-status{
+    margin-top:14px;font-size:13.5px;font-family:var(--mono);color:var(--water);display:none;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{background:var(--ink);color:#9FB4C0;padding:36px 0;}
+  .foot-wrap{
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;
+    font-size:13px;
+  }
+  .foot-wrap .brand-mark{color:var(--paper);font-size:18px;}
+  .foot-links{display:flex;gap:20px;}
+  .foot-links a{text-decoration:none;color:#9FB4C0;}
+  .foot-links a:hover{color:var(--paper);}
+
+  /* ---------- Floating WhatsApp ---------- */
+  .float-wa{
+    position:fixed;bottom:22px;right:22px;z-index:60;
+    width:56px;height:56px;border-radius:50%;
+    background:#25D366;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 18px rgba(0,0,0,.28);
+    text-decoration:none;
+  }
+  .float-wa svg{width:28px;height:28px;fill:#fff;}
+
+  ::selection{background:var(--copper-light);color:var(--ink);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="#top" class="brand">
+      <span class="brand-mark">MADI</span>
+      <span class="brand-tag">Gasfitería</span>
+    </a>
+    <nav class="links" id="navLinks">
+      <a href="#servicios">Servicios</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="nav-phone" href="tel:+56931737643">+56 9 3173 7643</a>
+      <a class="btn btn-copper" href="https://wa.me/56931737643?text=Hola%20MADI%2C%20necesito%20ayuda%20con%20un%20problema%20de%20gasfiter%C3%ADa" target="_blank" rel="noopener">Contáctanos</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero" style="padding-top:64px;">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Gasfitería · Alcantarillado · Fugas <span class="badge-247">Atención 24/7</span></span>
+        <h1>Cuando una cañería falla,<br><em>MADI</em> la deja resuelta.</h1>
+        <p class="lead">Mantención de gasfitería, detección de fugas, destapes y alcantarillado. Diagnosticamos el problema real antes de intervenir, para que la solución dure.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-copper" href="https://wa.me/56931737643?text=Hola%20MADI%2C%20necesito%20ayuda%20con%20un%20problema%20de%20gasfiter%C3%ADa" target="_blank" rel="noopener">Contáctanos</a>
+          <a class="btn btn-outline" href="#servicios">Ver servicios</a>
+        </div>
+        <p class="hero-note">RESPUESTA POR WHATSAPP 24/7 · COBERTURA: TODO SANTIAGO · REGIONES POR COTIZAR</p>
+      </div>
+
+      <div class="pipe-art" aria-hidden="true">
+        <svg viewBox="0 0 340 420">
+          <path d="M40,40 L260,40 L260,150 L60,150 L60,260 L300,260 L300,370"
+                fill="none" stroke="#2C4C63" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M40,40 L260,40 L260,150 L60,150 L60,260 L300,260 L300,370"
+                fill="none" stroke="#3C6B85" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="1 14"/>
+          <circle cx="40" cy="40" r="7" fill="#E0A669"/>
+          <circle cx="260" cy="40" r="7" fill="#E0A669"/>
+          <circle cx="260" cy="150" r="7" fill="#E0A669"/>
+          <circle cx="60" cy="150" r="7" fill="#E0A669"/>
+          <circle cx="60" cy="260" r="7" fill="#E0A669"/>
+          <circle cx="300" cy="260" r="7" fill="#E0A669"/>
+          <circle class="flow-dot" r="6"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS -->
+  <section id="servicios" class="services">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Qué hacemos</span>
+        <h2>Un servicio para cada punto de la red.</h2>
+        <p>Desde una llave que gotea hasta el alcantarillado tapado: cubrimos toda la línea de gasfitería, casa por casa, punto por punto.</p>
+      </div>
+
+      <div class="service-grid">
+        <div class="service-card">
+          <span class="service-num">01</span>
+          <h3>Detección de fugas de agua</h3>
+          <p>Ubicamos filtraciones ocultas en muros, pisos y matrices antes de que se conviertan en un daño mayor o en una cuenta de agua imposible de explicar.</p>
+          <div class="tags"><span class="tag">Fugas ocultas</span><span class="tag">Humedad</span><span class="tag">Consumo anormal</span></div>
+        </div>
+
+        <div class="service-card">
+          <span class="service-num">02</span>
+          <h3>Destapes de cañerías</h3>
+          <p>Desatoramos lavaplatos, duchas, WC y bajadas de agua con equipos adecuados para cada tipo de obstrucción, sin dañar la instalación existente.</p>
+          <div class="tags"><span class="tag">Cocina</span><span class="tag">Baño</span><span class="tag">Bajadas de agua</span></div>
+        </div>
+
+        <div class="service-card">
+          <span class="service-num">03</span>
+          <h3>Mantención de alcantarillado</h3>
+          <p>Revisión, limpieza y despeje de redes de alcantarillado domiciliario para evitar retornos de aguas servidas y malos olores.</p>
+          <div class="tags"><span class="tag">Cámaras</span><span class="tag">Colectores</span><span class="tag">Aguas servidas</span></div>
+        </div>
+
+        <div class="service-card">
+          <span class="service-num">04</span>
+          <h3>Instalaciones y reparaciones</h3>
+          <p>Cambio de llaves, WC, calefont, grifería y tramos de cañería, con materiales acordes a la normativa vigente.</p>
+          <div class="tags"><span class="tag">Grifería</span><span class="tag">Calefont</span><span class="tag">Cañerías</span></div>
+        </div>
+
+        <div class="service-card">
+          <span class="service-num">05</span>
+          <h3>Mantención preventiva</h3>
+          <p>Revisiones periódicas para detectar desgaste, corrosión o filtraciones incipientes antes de que se transformen en una urgencia.</p>
+          <div class="tags"><span class="tag">Revisión periódica</span><span class="tag">Prevención</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section id="proyectos" class="projects">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Trabajos realizados</span>
+        <h2>Proyectos de MADI.</h2>
+        <p>Fotos reales de trabajos en terreno: fugas resueltas, destapes, instalaciones y mantenciones de alcantarillado.</p>
+      </div>
+
+      <div class="upload-panel">
+        <div>
+          <span class="label">Panel de administración</span>
+          <p>Haz clic en "Subir fotos" para agregar más imágenes al carrusel. (Las que subas aquí quedan guardadas solo en tu navegador mientras editas — para dejarlas fijas en el sitio para todos los visitantes, pásamelas y las incrusto directo en el archivo.)</p>
+        </div>
+        <div>
+          <input type="file" id="photoInput" accept="image/*" multiple>
+          <button type="button" class="btn btn-copper" id="uploadBtn">Subir fotos</button>
+        </div>
+      </div>
+
+      <div class="carousel" id="carousel">
+        <div class="carousel-viewport">
+          <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide">
+              <img src="assets/proyectos/proyecto-1.jpg" alt="Destape de cañería con máquina destapadora">
+              <p class="caption">Destape de cañería en baño con máquina destapadora eléctrica.</p>
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/proyectos/proyecto-2.jpg" alt="Mantención de alcantarillado en exterior">
+              <p class="caption">Mantención de red de alcantarillado en cámara exterior.</p>
+            </div>
+            <div class="carousel-slide">
+              <img src="assets/proyectos/proyecto-3.jpg" alt="Instalación de llaves de paso en cañerías">
+              <p class="caption">Instalación de llaves de paso en cañerías de cobre.</p>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-arrow prev" id="prevBtn" aria-label="Foto anterior">‹</button>
+        <button class="carousel-arrow next" id="nextBtn" aria-label="Foto siguiente">›</button>
+        <div class="carousel-dots" id="carouselDots"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESO -->
+  <section id="proceso" class="process">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Cómo trabajamos</span>
+        <h2>Tres pasos, sin adivinar.</h2>
+        <p>Nada se interviene sin entender primero de dónde viene el problema.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-item">
+          <span class="step">PASO 1</span>
+          <h3>Contacto</h3>
+          <p>Nos escribes por WhatsApp o completas el formulario contando qué está pasando. Coordinamos día y horario de visita.</p>
+        </div>
+        <div class="process-item">
+          <span class="step">PASO 2</span>
+          <h3>Diagnóstico</h3>
+          <p>Revisamos en terreno el origen real del problema y te explicamos la solución antes de intervenir, con costos claros.</p>
+        </div>
+        <div class="process-item">
+          <span class="step">PASO 3</span>
+          <h3>Solución</h3>
+          <p>Ejecutamos el trabajo y dejamos la instalación probada y funcionando, sin dejar cabos sueltos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contact">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow">Contacto</span>
+        <h2>Cuéntanos qué está pasando.</h2>
+        <p>Respondemos directo por WhatsApp, <strong>las 24 horas, los 7 días de la semana</strong>. Completa el formulario y te va a abrir el chat con tu mensaje listo para enviar.</p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Vías directas</h3>
+          <p>Si prefieres escribirnos directo, cualquiera de estos medios llega a MADI.</p>
+          <div class="contact-methods">
+            <a class="contact-method" href="https://wa.me/56931737643" target="_blank" rel="noopener">
+              <span class="icon">W</span>
+              <span>
+                <span class="label">WhatsApp</span><br>
+                <span class="value">+56 9 3173 7643</span>
+              </span>
+            </a>
+            <a class="contact-method" href="tel:+56931737643">
+              <span class="icon">T</span>
+              <span>
+                <span class="label">Teléfono</span><br>
+                <span class="value">+56 9 3173 7643</span>
+              </span>
+            </a>
+            <a class="contact-method" href="mailto:yupanqui.ulz@gmail.com">
+              <span class="icon">@</span>
+              <span>
+                <span class="label">Email</span><br>
+                <span class="value">yupanqui.ulz@gmail.com</span>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        <form class="card" id="contactForm">
+          <div class="field">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="telefono">Teléfono</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+56 9 ..." required>
+            </div>
+            <div class="field">
+              <label for="servicio">Servicio</label>
+              <select id="servicio" name="servicio">
+                <option>Detección de fugas</option>
+                <option>Destape de cañerías</option>
+                <option>Mantención de alcantarillado</option>
+                <option>Instalación o reparación</option>
+                <option>Mantención preventiva</option>
+                <option>Otro</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="direccion">Comuna / dirección referencial</label>
+            <input type="text" id="direccion" name="direccion" placeholder="Ej: Ñuñoa, Santiago">
+          </div>
+          <div class="field">
+            <label for="mensaje">Cuéntanos qué está pasando</label>
+            <textarea id="mensaje" name="mensaje" placeholder="Describe el problema con el mayor detalle posible" required></textarea>
+          </div>
+          <div class="form-foot">
+            <button type="submit" class="btn btn-copper">Enviar por WhatsApp</button>
+            <span class="form-note">Al enviar se abrirá WhatsApp con tu mensaje listo.</span>
+          </div>
+          <p class="form-status" id="formStatus">Abriendo WhatsApp…</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap foot-wrap">
+    <span class="brand-mark">MADI</span>
+    <div class="foot-links">
+      <a href="https://wa.me/56931737643" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="mailto:yupanqui.ulz@gmail.com">Email</a>
+      <a href="tel:+56931737643">Llamar</a>
+    </div>
+    <span>© <span id="year"></span> MADI Gasfitería. Todos los derechos reservados.</span>
+  </div>
+</footer>
+
+<a class="float-wa" href="https://wa.me/56931737643?text=Hola%20MADI%2C%20necesito%20ayuda%20con%20un%20problema%20de%20gasfiter%C3%ADa" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.5,14.4c-0.3-0.1-1.7-0.9-2-1c-0.3-0.1-0.5-0.1-0.6,0.1c-0.2,0.3-0.7,1-0.9,1.1c-0.2,0.2-0.3,0.2-0.6,0.1c-0.3-0.1-1.2-0.5-2.3-1.4c-0.9-0.8-1.4-1.7-1.6-2c-0.2-0.3,0-0.5,0.1-0.6c0.1-0.1,0.3-0.3,0.4-0.5c0.1-0.2,0.2-0.3,0.3-0.5c0.1-0.2,0-0.4,0-0.5c-0.1-0.1-0.6-1.5-0.8-2C9.4,7,9.2,7,9,7C8.8,7,8.6,7,8.5,7C8.3,7,7.9,7.1,7.6,7.4C7.3,7.7,6.5,8.5,6.5,10c0,1.5,1.1,2.9,1.2,3.1c0.1,0.2,2.1,3.2,5.1,4.4c0.7,0.3,1.3,0.5,1.7,0.6c0.7,0.2,1.4,0.2,1.9,0.1c0.6-0.1,1.7-0.7,2-1.4c0.2-0.7,0.2-1.2,0.2-1.4C17.9,14.6,17.8,14.5,17.5,14.4z"/><path d="M12,2C6.5,2,2,6.5,2,12c0,1.9,0.5,3.7,1.5,5.3L2,22l4.9-1.3c1.5,0.8,3.3,1.3,5.1,1.3c5.5,0,10-4.5,10-10S17.5,2,12,2z M12,20.1c-1.6,0-3.1-0.4-4.4-1.2l-0.3-0.2l-3.1,0.8l0.8-3l-0.2-0.3C4,14.8,3.6,13.4,3.6,12c0-4.6,3.8-8.4,8.4-8.4s8.4,3.8,8.4,8.4S16.6,20.1,12,20.1z"/></svg>
+</a>
+
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Cerrar">×</button>
+  <img id="lightboxImg" src="" alt="Foto de proyecto MADI">
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('formStatus');
+  const WA_NUMBER = '56931737643';
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    const nombre = form.nombre.value.trim();
+    const telefono = form.telefono.value.trim();
+    const servicio = form.servicio.value;
+    const direccion = form.direccion.value.trim();
+    const mensaje = form.mensaje.value.trim();
+
+    let text = `Hola MADI, mi nombre es ${nombre}.%0A`;
+    text += `Servicio: ${servicio}%0A`;
+    if(direccion){ text += `Comuna/dirección: ${direccion}%0A`; }
+    text += `Teléfono de contacto: ${telefono}%0A`;
+    text += `Detalle: ${mensaje}`;
+
+    const url = `https://wa.me/${WA_NUMBER}?text=${text}`;
+
+    status.style.display = 'block';
+    window.open(url, '_blank', 'noopener');
+  });
+
+  /* ---- Carrusel de proyectos ---- */
+  const track = document.getElementById('carouselTrack');
+  const dotsWrap = document.getElementById('carouselDots');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const photoInput = document.getElementById('photoInput');
+  const uploadBtn = document.getElementById('uploadBtn');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const STORAGE_KEY = 'madi_gallery_extra_photos';
+  let current = 0;
+
+  function slides(){ return [...track.querySelectorAll('.carousel-slide')]; }
+
+  function buildDots(){
+    dotsWrap.innerHTML = '';
+    slides().forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === current ? ' active' : '');
+      dot.type = 'button';
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+  }
+
+  function updateCarousel(){
+    const total = slides().length;
+    if(current >= total) current = total - 1;
+    if(current < 0) current = 0;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    [...dotsWrap.children].forEach((d, i) => d.classList.toggle('active', i === current));
+  }
+
+  function goTo(i){ current = i; updateCarousel(); }
+  prevBtn.addEventListener('click', () => { current = (current - 1 + slides().length) % slides().length; updateCarousel(); });
+  nextBtn.addEventListener('click', () => { current = (current + 1) % slides().length; updateCarousel(); });
+
+  function addSlide(dataUrl, caption){
+    const slide = document.createElement('div');
+    slide.className = 'carousel-slide';
+    slide.innerHTML = `<img src="${dataUrl}" alt="${caption || 'Foto de proyecto MADI'}"><p class="caption">${caption || ''}</p>`;
+    track.appendChild(slide);
+    buildDots();
+    updateCarousel();
+  }
+
+  function saveExtraPhotos(){
+    const extras = slides().slice(3).map(s => s.querySelector('img').src);
+    try{ localStorage.setItem(STORAGE_KEY, JSON.stringify(extras)); }catch(e){ /* almacenamiento lleno o no disponible */ }
+  }
+
+  function loadExtraPhotos(){
+    let extras = [];
+    try{ extras = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); }catch(e){ extras = []; }
+    extras.forEach(src => addSlide(src, ''));
+  }
+
+  buildDots();
+  loadExtraPhotos();
+
+  uploadBtn.addEventListener('click', () => photoInput.click());
+  photoInput.addEventListener('change', (e) => {
+    const files = [...e.target.files];
+    files.forEach(file => {
+      const reader = new FileReader();
+      reader.onload = (ev) => { addSlide(ev.target.result, ''); saveExtraPhotos(); };
+      reader.readAsDataURL(file);
+    });
+    photoInput.value = '';
+  });
+
+  track.addEventListener('click', (e) => {
+    const slide = e.target.closest('.carousel-slide');
+    if(!slide) return;
+    const img = slide.querySelector('img');
+    if(img){
+      lightboxImg.src = img.src;
+      lightbox.classList.add('open');
+    }
+  });
+
+  lightboxClose.addEventListener('click', () => lightbox.classList.remove('open'));
+  lightbox.addEventListener('click', (e) => { if(e.target === lightbox) lightbox.classList.remove('open'); });
+</script>
+
+</body>
+</html>
